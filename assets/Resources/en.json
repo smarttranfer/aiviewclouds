@@ -1,0 +1,19 @@
+{
+  "Title": "Overview",
+  "Btn1": "Face",
+  "Btn2": "Safe",
+  "Btn3": "Security",
+  "TitleAction1":"Face",
+  "TitleAction2":"Security (Intrusion)",
+  "TitleAction3":"Safe",
+  "BtnAction1": "Stranger",
+  "BtnAction2": "Dangerous object",
+  "BtnAction3":"Acquaintance",
+  "BtnAction4": "Prowled",
+  "BtnAction5": "Hurdles",
+  "BtnAction6": "The restricted area",
+  "BtnAction7": "Long sleep",
+  "BtnAction8": "Absent",
+  "BtnAction9": "People fall",
+  "BtnAction10": "Explosion"
+}
