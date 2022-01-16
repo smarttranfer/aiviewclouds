@@ -19,7 +19,7 @@ class BtnSetting extends StatelessWidget {
   final Color labelColor;
   final String labelvi;
   final String labelen;
-  final String chossen;
+  final List chossen;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class BtnSetting extends StatelessWidget {
                       child: Container(
                     padding: EdgeInsets.only(right: 10),
                     child: Text(
-                      chossen,
+                      chossen.toString(),
                       style: TextStyle(
                           color: labelColor.withOpacity(0.4),
                           fontSize: 14,

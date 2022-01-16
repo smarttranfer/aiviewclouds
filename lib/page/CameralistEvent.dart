@@ -21,6 +21,9 @@ class CameraViewList extends StatefulWidget {
 }
 
 class cameralist extends State {
+  static List<String> CameraLists = [];
+  static List<String> TitleLists = [];
+  static List<String> TimeLists = [];
   late final List<Evnet> listData;
   bool closedialog = false;
   TextEditingController editingController = TextEditingController();
@@ -125,6 +128,7 @@ class cameralist extends State {
                                               Colors.black87.withOpacity(0.0),
                                           child: InkWell(
                                             onTap: () {
+                                              // Navigator.pop(context);
                                               showModalBottomSheet(
                                                   shape: RoundedRectangleBorder(
                                                     borderRadius:
@@ -151,7 +155,255 @@ class cameralist extends State {
                                                                           children: [
                                                                             IconButton(
                                                                               onPressed: () {
-                                                                                Navigator.pop(context);
+
+                                                                                // -----------------------------------------------------------------------------------------------------
+                                                                                showModalBottomSheet(
+                                                                                  shape: RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(10.0),
+                                                                                  ),
+                                                                                  context: context,
+                                                                                  builder: (BuildContext context) {
+                                                                                    return Container(
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: HexColor("#2B2F33"),
+                                                                                        borderRadius: BorderRadius.all(
+                                                                                          Radius.circular(10.0),
+                                                                                        ),
+                                                                                      ),
+                                                                                      padding: EdgeInsets.only(top: 20),
+                                                                                      child: Column(
+                                                                                        children: <Widget>[
+                                                                                          InkWell(
+                                                                                            onTap: () {
+                                                                                              setState(() {
+                                                                                                Navigator.pop(context);
+                                                                                              });
+                                                                                            },
+                                                                                            child: Btnreset(
+                                                                                              wights: 50,
+                                                                                              heights: 100,
+                                                                                              path: "assets/IconApp/closefilter.svg",
+                                                                                            ),
+                                                                                          ),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                onTap: () {
+                                                                                                  Navigator.pop(context);
+                                                                                                  showModalBottomSheet(
+                                                                                                      shape: RoundedRectangleBorder(
+                                                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                                                      ),
+                                                                                                      context: context,
+                                                                                                      builder: (BuildContext context) {
+                                                                                                        return SingleChildScrollView(
+                                                                                                            child: Container(
+                                                                                                                decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                                child: Column(children: [
+                                                                                                                  Container(
+                                                                                                                      margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                      child: Row(children: [
+                                                                                                                        IconButton(
+                                                                                                                          onPressed: () {
+                                                                                                                            Navigator.pop(context);
+                                                                                                                          },
+                                                                                                                          icon: Icon(
+                                                                                                                            Icons.arrow_back_ios,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        SizedBox(
+                                                                                                                          width: MediaQuery.of(context).size.width / 4,
+                                                                                                                        ),
+                                                                                                                        Text(
+                                                                                                                          "Tên bài ",
+                                                                                                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                        ),
+                                                                                                                      ])),
+                                                                                                                  Container(
+                                                                                                                      width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: HexColor("#404447"),
+                                                                                                                        borderRadius: BorderRadius.all(
+                                                                                                                          Radius.circular(15),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      child: TextField(
+                                                                                                                        autofocus: true,
+                                                                                                                        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        controller: editingController,
+                                                                                                                        decoration: InputDecoration(
+                                                                                                                          fillColor: Colors.grey,
+                                                                                                                          hintText: "Tìm kiếm",
+                                                                                                                          hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                          prefixIcon: Icon(
+                                                                                                                            Icons.search,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                          contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                          focusedBorder: OutlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )),
+                                                                                                                  Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameEx())
+                                                                                                                ])));
+                                                                                                      });
+
+                                                                                                  setState(() {});
+                                                                                                },
+                                                                                                child: BtnSetting(chossen: Config.btnresetchossen(1), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenNamevi, labelen: Config.labeChossenNameen),
+                                                                                              )),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                            color: Colors.black87.withOpacity(0.0),
+                                                                                            child: InkWell(
+                                                                                              onTap: () {
+                                                                                                showModalBottomSheet(
+                                                                                                    shape: RoundedRectangleBorder(
+                                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                                    ),
+                                                                                                    context: context,
+                                                                                                    builder: (BuildContext context) {
+                                                                                                      return SingleChildScrollView(
+                                                                                                          child: Container(
+                                                                                                              decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                              child: Column(children: [
+                                                                                                                Container(
+                                                                                                                    margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                    child: Row(children: [
+                                                                                                                      IconButton(
+                                                                                                                        onPressed: () {
+                                                                                                                          // Navigator.pop(context);
+                                                                                                                        },
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.arrow_back_ios,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      SizedBox(
+                                                                                                                        width: MediaQuery.of(context).size.width / 4,
+                                                                                                                      ),
+                                                                                                                      Text(
+                                                                                                                        "Thời gian",
+                                                                                                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                      ),
+                                                                                                                    ])),
+                                                                                                                Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExtime())
+                                                                                                              ])));
+                                                                                                    });
+                                                                                                setState(() {});
+                                                                                              },
+                                                                                              child: BtnSetting(chossen: Config.btnresetchossen(2), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossentimevi, labelen: Config.labeChossentimeen),
+                                                                                            ),
+                                                                                          ),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                onTap: () {
+                                                                                                  showModalBottomSheet(
+                                                                                                      shape: RoundedRectangleBorder(
+                                                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                                                      ),
+                                                                                                      context: context,
+                                                                                                      builder: (BuildContext context) {
+                                                                                                        return SingleChildScrollView(
+                                                                                                            child: Container(
+                                                                                                                decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                                child: Column(children: [
+                                                                                                                  Container(
+                                                                                                                      margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                      child: Row(children: [
+                                                                                                                        IconButton(
+                                                                                                                          onPressed: () {
+                                                                                                                            Navigator.pop(context);
+                                                                                                                          },
+                                                                                                                          icon: Icon(
+                                                                                                                            Icons.arrow_back_ios,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        SizedBox(
+                                                                                                                          width: MediaQuery.of(context).size.width / 4,
+                                                                                                                        ),
+                                                                                                                        Text(
+                                                                                                                          "Camera",
+                                                                                                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                        ),
+                                                                                                                      ])),
+                                                                                                                  Container(
+                                                                                                                      width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: HexColor("#404447"),
+                                                                                                                        borderRadius: BorderRadius.all(
+                                                                                                                          Radius.circular(15),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      child: TextField(
+                                                                                                                        autofocus: true,
+                                                                                                                        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        controller: editingController,
+                                                                                                                        decoration: InputDecoration(
+                                                                                                                          fillColor: Colors.grey,
+                                                                                                                          hintText: "Tìm kiếm",
+                                                                                                                          hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                          prefixIcon: Icon(
+                                                                                                                            Icons.search,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                          contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                          focusedBorder: OutlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )),
+                                                                                                                  Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExcamera())
+                                                                                                                ])));
+                                                                                                      });
+                                                                                                  setState(() {});
+                                                                                                },
+                                                                                                child: BtnSetting(chossen: Config.btnresetchossen(3), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenCameravi, labelen: Config.labeChossenCameraen),
+                                                                                              )),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                  onTap: () {
+                                                                                                    setState(() {});
+                                                                                                  },
+                                                                                                  child: BtnShowFilter(
+                                                                                                    wights: 200,
+                                                                                                    heights: 60,
+                                                                                                    colors: Colors.orange,
+                                                                                                    labelColor: Colors.white,
+                                                                                                    ValuelColor: Colors.blue,
+                                                                                                  )))
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                );
+                                                                                // --------------------------------------------------------------------------------------------------------
                                                                               },
                                                                               icon: Icon(
                                                                                 Icons.arrow_back_ios,
@@ -167,7 +419,6 @@ class cameralist extends State {
                                                                             ),
                                                                           ])),
                                                                   Container(
-
                                                                       width: MediaQuery.of(context)
                                                                               .size
                                                                               .width /
@@ -231,7 +482,7 @@ class cameralist extends State {
                                                                   Container(
                                                                       margin: EdgeInsets
                                                                           .all(
-                                                                          5),
+                                                                              5),
                                                                       height: MediaQuery.of(
                                                                               context)
                                                                           .size
@@ -295,7 +546,254 @@ class cameralist extends State {
                                                                           IconButton(
                                                                             onPressed:
                                                                                 () {
-                                                                              Navigator.pop(context);
+
+                                                                              // ------------------------------------------------------------------------------------
+                                                                              showModalBottomSheet(
+                                                                                shape: RoundedRectangleBorder(
+                                                                                  borderRadius: BorderRadius.circular(10.0),
+                                                                                ),
+                                                                                context: context,
+                                                                                builder: (BuildContext context) {
+                                                                                  return Container(
+                                                                                    decoration: BoxDecoration(
+                                                                                      color: HexColor("#2B2F33"),
+                                                                                      borderRadius: BorderRadius.all(
+                                                                                        Radius.circular(10.0),
+                                                                                      ),
+                                                                                    ),
+                                                                                    padding: EdgeInsets.only(top: 20),
+                                                                                    child: Column(
+                                                                                      children: <Widget>[
+                                                                                        InkWell(
+                                                                                          onTap: () {
+                                                                                            setState(() {
+                                                                                              Navigator.pop(context);
+                                                                                            });
+                                                                                          },
+                                                                                          child: Btnreset(
+                                                                                            wights: 50,
+                                                                                            heights: 100,
+                                                                                            path: "assets/IconApp/closefilter.svg",
+                                                                                          ),
+                                                                                        ),
+                                                                                        SizedBox(
+                                                                                          height: 20,
+                                                                                        ),
+                                                                                        Material(
+                                                                                            color: Colors.black87.withOpacity(0.0),
+                                                                                            child: InkWell(
+                                                                                              onTap: () {
+                                                                                                Navigator.pop(context);
+                                                                                                showModalBottomSheet(
+                                                                                                    shape: RoundedRectangleBorder(
+                                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                                    ),
+                                                                                                    context: context,
+                                                                                                    builder: (BuildContext context) {
+                                                                                                      return SingleChildScrollView(
+                                                                                                          child: Container(
+                                                                                                              decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                              child: Column(children: [
+                                                                                                                Container(
+                                                                                                                    margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                    child: Row(children: [
+                                                                                                                      IconButton(
+                                                                                                                        onPressed: () {
+                                                                                                                          Navigator.pop(context);
+                                                                                                                        },
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.arrow_back_ios,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      SizedBox(
+                                                                                                                        width: MediaQuery.of(context).size.width / 4,
+                                                                                                                      ),
+                                                                                                                      Text(
+                                                                                                                        "Tên bài ",
+                                                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                      ),
+                                                                                                                    ])),
+                                                                                                                Container(
+                                                                                                                    width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                    decoration: BoxDecoration(
+                                                                                                                      color: HexColor("#404447"),
+                                                                                                                      borderRadius: BorderRadius.all(
+                                                                                                                        Radius.circular(15),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                    child: TextField(
+                                                                                                                      autofocus: true,
+                                                                                                                      style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                      controller: editingController,
+                                                                                                                      decoration: InputDecoration(
+                                                                                                                        fillColor: Colors.grey,
+                                                                                                                        hintText: "Tìm kiếm",
+                                                                                                                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        prefixIcon: Icon(
+                                                                                                                          Icons.search,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                        contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                        focusedBorder: OutlineInputBorder(
+                                                                                                                          borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                          borderRadius: BorderRadius.circular(25.7),
+                                                                                                                        ),
+                                                                                                                        enabledBorder: UnderlineInputBorder(
+                                                                                                                          borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                          borderRadius: BorderRadius.circular(25.7),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    )),
+                                                                                                                Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameEx())
+                                                                                                              ])));
+                                                                                                    });
+
+                                                                                                setState(() {});
+                                                                                              },
+                                                                                              child: BtnSetting(chossen: Config.btnresetchossen(1), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenNamevi, labelen: Config.labeChossenNameen),
+                                                                                            )),
+                                                                                        SizedBox(
+                                                                                          height: 20,
+                                                                                        ),
+                                                                                        Material(
+                                                                                          color: Colors.black87.withOpacity(0.0),
+                                                                                          child: InkWell(
+                                                                                            onTap: () {
+                                                                                              showModalBottomSheet(
+                                                                                                  shape: RoundedRectangleBorder(
+                                                                                                    borderRadius: BorderRadius.circular(10.0),
+                                                                                                  ),
+                                                                                                  context: context,
+                                                                                                  builder: (BuildContext context) {
+                                                                                                    return SingleChildScrollView(
+                                                                                                        child: Container(
+                                                                                                            decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                            child: Column(children: [
+                                                                                                              Container(
+                                                                                                                  margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                  child: Row(children: [
+                                                                                                                    IconButton(
+                                                                                                                      onPressed: () {
+                                                                                                                        Navigator.pop(context);
+                                                                                                                      },
+                                                                                                                      icon: Icon(
+                                                                                                                        Icons.arrow_back_ios,
+                                                                                                                        color: Colors.white,
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                    SizedBox(
+                                                                                                                      width: MediaQuery.of(context).size.width / 4,
+                                                                                                                    ),
+                                                                                                                    Text(
+                                                                                                                      "Thời gian",
+                                                                                                                      style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                    ),
+                                                                                                                  ])),
+                                                                                                              Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExtime())
+                                                                                                            ])));
+                                                                                                  });
+                                                                                              setState(() {});
+                                                                                            },
+                                                                                            child: BtnSetting(chossen: Config.btnresetchossen(2), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossentimevi, labelen: Config.labeChossentimeen),
+                                                                                          ),
+                                                                                        ),
+                                                                                        SizedBox(
+                                                                                          height: 20,
+                                                                                        ),
+                                                                                        Material(
+                                                                                            color: Colors.black87.withOpacity(0.0),
+                                                                                            child: InkWell(
+                                                                                              onTap: () {
+                                                                                                showModalBottomSheet(
+                                                                                                    shape: RoundedRectangleBorder(
+                                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                                    ),
+                                                                                                    context: context,
+                                                                                                    builder: (BuildContext context) {
+                                                                                                      return SingleChildScrollView(
+                                                                                                          child: Container(
+                                                                                                              decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                              child: Column(children: [
+                                                                                                                Container(
+                                                                                                                    margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                    child: Row(children: [
+                                                                                                                      IconButton(
+                                                                                                                        onPressed: () {
+                                                                                                                          Navigator.pop(context);
+                                                                                                                        },
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.arrow_back_ios,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      SizedBox(
+                                                                                                                        width: MediaQuery.of(context).size.width / 4,
+                                                                                                                      ),
+                                                                                                                      Text(
+                                                                                                                        "Camera",
+                                                                                                                        style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                      ),
+                                                                                                                    ])),
+                                                                                                                Container(
+                                                                                                                    width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                    decoration: BoxDecoration(
+                                                                                                                      color: HexColor("#404447"),
+                                                                                                                      borderRadius: BorderRadius.all(
+                                                                                                                        Radius.circular(15),
+                                                                                                                      ),
+                                                                                                                    ),
+                                                                                                                    child: TextField(
+                                                                                                                      autofocus: true,
+                                                                                                                      style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                      controller: editingController,
+                                                                                                                      decoration: InputDecoration(
+                                                                                                                        fillColor: Colors.grey,
+                                                                                                                        hintText: "Tìm kiếm",
+                                                                                                                        hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        prefixIcon: Icon(
+                                                                                                                          Icons.search,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                        contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                        focusedBorder: OutlineInputBorder(
+                                                                                                                          borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                          borderRadius: BorderRadius.circular(25.7),
+                                                                                                                        ),
+                                                                                                                        enabledBorder: UnderlineInputBorder(
+                                                                                                                          borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                          borderRadius: BorderRadius.circular(25.7),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                    )),
+                                                                                                                Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExcamera())
+                                                                                                              ])));
+                                                                                                    });
+                                                                                                setState(() {});
+                                                                                              },
+                                                                                              child: BtnSetting(chossen: Config.btnresetchossen(3), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenCameravi, labelen: Config.labeChossenCameraen),
+                                                                                            )),
+                                                                                        SizedBox(
+                                                                                          height: 20,
+                                                                                        ),
+                                                                                        Material(
+                                                                                            color: Colors.black87.withOpacity(0.0),
+                                                                                            child: InkWell(
+                                                                                                onTap: () {
+                                                                                                  setState(() {});
+                                                                                                },
+                                                                                                child: BtnShowFilter(
+                                                                                                  wights: 200,
+                                                                                                  heights: 60,
+                                                                                                  colors: Colors.orange,
+                                                                                                  labelColor: Colors.white,
+                                                                                                  ValuelColor: Colors.blue,
+                                                                                                )))
+                                                                                      ],
+                                                                                    ),
+                                                                                  );
+                                                                                },
+                                                                              );
                                                                             },
                                                                             icon:
                                                                                 Icon(
@@ -317,8 +815,7 @@ class cameralist extends State {
                                                                         ])),
                                                                 Container(
                                                                     margin: EdgeInsets
-                                                                        .all(
-                                                                        5),
+                                                                        .all(5),
                                                                     height: MediaQuery.of(
                                                                             context)
                                                                         .size
@@ -336,7 +833,8 @@ class cameralist extends State {
                                             setState(() {});
                                           },
                                           child: BtnSetting(
-                                              chossen: Config.btnresetchossen(2),
+                                              chossen:
+                                                  Config.btnresetchossen(2),
                                               heights: 60,
                                               colors: HexColor("#404447"),
                                               path: "",
@@ -381,6 +879,252 @@ class cameralist extends State {
                                                                             IconButton(
                                                                               onPressed: () {
                                                                                 Navigator.pop(context);
+                                                                                showModalBottomSheet(
+                                                                                  shape: RoundedRectangleBorder(
+                                                                                    borderRadius: BorderRadius.circular(10.0),
+                                                                                  ),
+                                                                                  context: context,
+                                                                                  builder: (BuildContext context) {
+                                                                                    return Container(
+                                                                                      decoration: BoxDecoration(
+                                                                                        color: HexColor("#2B2F33"),
+                                                                                        borderRadius: BorderRadius.all(
+                                                                                          Radius.circular(10.0),
+                                                                                        ),
+                                                                                      ),
+                                                                                      padding: EdgeInsets.only(top: 20),
+                                                                                      child: Column(
+                                                                                        children: <Widget>[
+                                                                                          InkWell(
+                                                                                            onTap: () {
+                                                                                              setState(() {
+                                                                                                Navigator.pop(context);
+                                                                                              });
+                                                                                            },
+                                                                                            child: Btnreset(
+                                                                                              wights: 50,
+                                                                                              heights: 100,
+                                                                                              path: "assets/IconApp/closefilter.svg",
+                                                                                            ),
+                                                                                          ),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                onTap: () {
+                                                                                                  Navigator.pop(context);
+                                                                                                  showModalBottomSheet(
+                                                                                                      shape: RoundedRectangleBorder(
+                                                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                                                      ),
+                                                                                                      context: context,
+                                                                                                      builder: (BuildContext context) {
+                                                                                                        return SingleChildScrollView(
+                                                                                                            child: Container(
+                                                                                                                decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                                child: Column(children: [
+                                                                                                                  Container(
+                                                                                                                      margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                      child: Row(children: [
+                                                                                                                        IconButton(
+                                                                                                                          onPressed: () {
+                                                                                                                            Navigator.pop(context);
+                                                                                                                          },
+                                                                                                                          icon: Icon(
+                                                                                                                            Icons.arrow_back_ios,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        SizedBox(
+                                                                                                                          width: MediaQuery.of(context).size.width / 4,
+                                                                                                                        ),
+                                                                                                                        Text(
+                                                                                                                          "Tên bài ",
+                                                                                                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                        ),
+                                                                                                                      ])),
+                                                                                                                  Container(
+                                                                                                                      width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: HexColor("#404447"),
+                                                                                                                        borderRadius: BorderRadius.all(
+                                                                                                                          Radius.circular(15),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      child: TextField(
+                                                                                                                        autofocus: true,
+                                                                                                                        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        controller: editingController,
+                                                                                                                        decoration: InputDecoration(
+                                                                                                                          fillColor: Colors.grey,
+                                                                                                                          hintText: "Tìm kiếm",
+                                                                                                                          hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                          prefixIcon: Icon(
+                                                                                                                            Icons.search,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                          contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                          focusedBorder: OutlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )),
+                                                                                                                  Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameEx())
+                                                                                                                ])));
+                                                                                                      });
+
+                                                                                                  setState(() {});
+                                                                                                },
+                                                                                                child: BtnSetting(chossen: Config.btnresetchossen(1), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenNamevi, labelen: Config.labeChossenNameen),
+                                                                                              )),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                            color: Colors.black87.withOpacity(0.0),
+                                                                                            child: InkWell(
+                                                                                              onTap: () {
+                                                                                                showModalBottomSheet(
+                                                                                                    shape: RoundedRectangleBorder(
+                                                                                                      borderRadius: BorderRadius.circular(10.0),
+                                                                                                    ),
+                                                                                                    context: context,
+                                                                                                    builder: (BuildContext context) {
+                                                                                                      return SingleChildScrollView(
+                                                                                                          child: Container(
+                                                                                                              decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                              child: Column(children: [
+                                                                                                                Container(
+                                                                                                                    margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                    child: Row(children: [
+                                                                                                                      IconButton(
+                                                                                                                        onPressed: () {
+                                                                                                                          Navigator.pop(context);
+                                                                                                                        },
+                                                                                                                        icon: Icon(
+                                                                                                                          Icons.arrow_back_ios,
+                                                                                                                          color: Colors.white,
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      SizedBox(
+                                                                                                                        width: MediaQuery.of(context).size.width / 4,
+                                                                                                                      ),
+                                                                                                                      Text(
+                                                                                                                        "Thời gian",
+                                                                                                                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                      ),
+                                                                                                                    ])),
+                                                                                                                Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExtime())
+                                                                                                              ])));
+                                                                                                    });
+                                                                                                setState(() {});
+                                                                                              },
+                                                                                              child: BtnSetting(chossen: Config.btnresetchossen(2), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossentimevi, labelen: Config.labeChossentimeen),
+                                                                                            ),
+                                                                                          ),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                onTap: () {
+                                                                                                  showModalBottomSheet(
+                                                                                                      shape: RoundedRectangleBorder(
+                                                                                                        borderRadius: BorderRadius.circular(10.0),
+                                                                                                      ),
+                                                                                                      context: context,
+                                                                                                      builder: (BuildContext context) {
+                                                                                                        return SingleChildScrollView(
+                                                                                                            child: Container(
+                                                                                                                decoration: new BoxDecoration(color: HexColor("#2B2F33")),
+                                                                                                                child: Column(children: [
+                                                                                                                  Container(
+                                                                                                                      margin: EdgeInsets.only(top: 15, bottom: 15),
+                                                                                                                      child: Row(children: [
+                                                                                                                        IconButton(
+                                                                                                                          onPressed: () {
+                                                                                                                            Navigator.pop(context);
+                                                                                                                          },
+                                                                                                                          icon: Icon(
+                                                                                                                            Icons.arrow_back_ios,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                        SizedBox(
+                                                                                                                          width: MediaQuery.of(context).size.width / 4,
+                                                                                                                        ),
+                                                                                                                        Text(
+                                                                                                                          "Camera",
+                                                                                                                          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
+                                                                                                                        ),
+                                                                                                                      ])),
+                                                                                                                  Container(
+                                                                                                                      width: MediaQuery.of(context).size.width / 1.1,
+                                                                                                                      decoration: BoxDecoration(
+                                                                                                                        color: HexColor("#404447"),
+                                                                                                                        borderRadius: BorderRadius.all(
+                                                                                                                          Radius.circular(15),
+                                                                                                                        ),
+                                                                                                                      ),
+                                                                                                                      child: TextField(
+                                                                                                                        autofocus: true,
+                                                                                                                        style: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                        controller: editingController,
+                                                                                                                        decoration: InputDecoration(
+                                                                                                                          fillColor: Colors.grey,
+                                                                                                                          hintText: "Tìm kiếm",
+                                                                                                                          hintStyle: TextStyle(fontSize: 15.0, color: Colors.grey),
+                                                                                                                          prefixIcon: Icon(
+                                                                                                                            Icons.search,
+                                                                                                                            color: Colors.white,
+                                                                                                                          ),
+                                                                                                                          contentPadding: const EdgeInsets.only(left: 14.0, bottom: 8.0, top: 8.0),
+                                                                                                                          focusedBorder: OutlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                          enabledBorder: UnderlineInputBorder(
+                                                                                                                            borderSide: BorderSide(color: HexColor("#404447")),
+                                                                                                                            borderRadius: BorderRadius.circular(25.7),
+                                                                                                                          ),
+                                                                                                                        ),
+                                                                                                                      )),
+                                                                                                                  Container(margin: EdgeInsets.all(5), height: MediaQuery.of(context).size.height, width: MediaQuery.of(context).size.width, color: HexColor("#2B2F33"), child: ListnameExcamera())
+                                                                                                                ])));
+                                                                                                      });
+                                                                                                  setState(() {});
+                                                                                                },
+                                                                                                child: BtnSetting(chossen: Config.btnresetchossen(3), heights: 60, colors: HexColor("#404447"), path: "", labelColor: Colors.white, labelvi: Config.labeChossenCameravi, labelen: Config.labeChossenCameraen),
+                                                                                              )),
+                                                                                          SizedBox(
+                                                                                            height: 20,
+                                                                                          ),
+                                                                                          Material(
+                                                                                              color: Colors.black87.withOpacity(0.0),
+                                                                                              child: InkWell(
+                                                                                                  onTap: () {
+                                                                                                    setState(() {});
+                                                                                                  },
+                                                                                                  child: BtnShowFilter(
+                                                                                                    wights: 200,
+                                                                                                    heights: 60,
+                                                                                                    colors: Colors.orange,
+                                                                                                    labelColor: Colors.white,
+                                                                                                    ValuelColor: Colors.blue,
+                                                                                                  )))
+                                                                                        ],
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                );
                                                                               },
                                                                               icon: Icon(
                                                                                 Icons.arrow_back_ios,
@@ -459,7 +1203,7 @@ class cameralist extends State {
                                                                   Container(
                                                                       margin: EdgeInsets
                                                                           .all(
-                                                                          5),
+                                                                              5),
                                                                       height: MediaQuery.of(
                                                                               context)
                                                                           .size

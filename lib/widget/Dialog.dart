@@ -28,7 +28,7 @@ Widget ListnameEx() {
   Listcheckbox.clear();
   for (var i in listbranh) {
     Listcheckbox.add(FieldDialog(
-      Contents: i.namebranch,
+      Contents: i.namebranch,name: 1,
     ));
   }
   return SingleChildScrollView(child: Column(

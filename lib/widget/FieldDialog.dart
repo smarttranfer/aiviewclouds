@@ -1,10 +1,13 @@
+import 'package:aiview/model/Global.dart';
 import 'package:flutter/material.dart';
 import 'package:hexcolor/hexcolor.dart';
 
 class FieldDialog extends StatefulWidget {
-  const FieldDialog({required String this.Contents, Key? key})
+  const FieldDialog(
+      {required String this.Contents, required int this.name, Key? key})
       : super(key: key);
   final String Contents;
+  final int name;
   @override
   State<StatefulWidget> createState() {
     return _FiledDialog();
@@ -41,7 +44,6 @@ class _FiledDialog extends State<FieldDialog> {
                     decoration: TextDecoration.none,
                     fontStyle: FontStyle.normal),
               ),
-
               Material(
                   color: HexColor("#2B2F33"),
                   child: Theme(
@@ -54,6 +56,23 @@ class _FiledDialog extends State<FieldDialog> {
                       onChanged: (bool? value) {
                         setState(() {
                           isChecked = value!;
+                          if (isChecked == true) {
+                            if (widget.name == 1) {
+                              Config.TitleList.add(widget.Contents);
+                            } else if (widget.name == 2) {
+                              Config.TimeList.add(widget.Contents);
+                            } else if(widget.name == 3){
+                              Config.CameraList.add(widget.Contents);
+                            }
+                          } else {
+                            if (widget.name == 1) {
+                              Config.TitleList.remove(widget.Contents);
+                            } else if (widget.name == 2) {
+                              Config.TimeList.remove(widget.Contents);
+                            } else if(widget.name == 3) {
+                              Config.CameraList.remove(widget.Contents);
+                            }
+                          }
                         });
                       },
                       activeColor: Colors.orange,

@@ -27,7 +27,7 @@ Widget ListnameExtime() {
   Listcheckbox.clear();
   for (var i in Time) {
     Listcheckbox.add(FieldDialog(
-      Contents: i.time,
+      Contents: i.time,name: 2,
     ));
   }
   return SingleChildScrollView(child: Column(

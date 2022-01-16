@@ -113,7 +113,7 @@ class FaceWiget extends State {
                                               });
                                             },
                                             child: BtnSetting(
-                                                chossen: "",
+                                                chossen: [],
                                                 heights: 60,
                                                 colors: Colors.grey,
                                                 path: "",
@@ -135,7 +135,7 @@ class FaceWiget extends State {
                                               setState(() {});
                                             },
                                             child: BtnSetting(
-                                                chossen: "",
+                                                chossen: [],
                                                 heights: 60,
                                                 colors: Colors.grey,
                                                 path: "",

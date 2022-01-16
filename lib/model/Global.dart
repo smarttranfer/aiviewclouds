@@ -3,7 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class Config {
+  late PersistentBottomSheetController _controller; // <------ Instance variable
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   // check valueable
+  static List<String> CameraList = [];
+  static List<String> TitleList = [];
+  static List<String> TimeList = [];
   static int timeDruation = 150;
   static bool changelanguge = true;
   static bool changfilter = true;
@@ -125,6 +130,7 @@ class Config {
       "https://github.com/GeekyAnts/flick-video-player-demo-videos/blob/master/example/9th_may_compressed.mp4?raw=true";
 
   static bool checkurlenvent = true;
+
   static String Sumnotifycation(int numbernotify) {
     if (numbernotify > 9999) {
       return "999+";
@@ -141,15 +147,25 @@ class Config {
     }
   }
 
-  static String btnresetchossen(chossens) {
+  static List btnresetchossen(chossens) {
     if (chossens == 1) {
-      return labeNamenvi;
+      if(TitleList.length>2){
+
+        return [TitleList[0],TitleList[1]];
+      }
+      return TitleList;
     } else if (chossens == 2) {
-      return labeTimevi;
+      if(TimeList.length>2){
+        return [TimeList[0],TimeList[1]];
+      }
+      return TimeList;
     } else if (chossens == 3) {
-      return labeCameravi;
+      if(CameraList.length>2){
+        return[CameraList[0],[CameraList[1]]];
+      }
+      return CameraList;
     } else {
-      return labeChossenvi;
+      return [labeChossenvi];
     }
   }
 }

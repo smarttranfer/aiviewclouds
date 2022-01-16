@@ -19,25 +19,25 @@ class Dialogscamera extends StatelessWidget {
 Widget ListnameExcamera() {
   Listcheckbox.clear();
 
-  for (var i in ListCamera) {
+  for (var i in ListCamera){
     Listcheckbox.add(
       TreeView(iconSize: 40,nodes: [
         TreeNode(
             content: FieldDialog(
-              Contents: i.brand,
+              Contents: i.brand,name: 3,
             ),
             children: [
                 TreeNode(
                     content: FieldDialog(
-                  Contents: "Camera1",
+                  Contents: "Camera1",name: 3,
                 )),
               TreeNode(
                   content: FieldDialog(
-                    Contents: "Camera2",
+                    Contents: "Camera2",name: 3,
                   )),
               TreeNode(
                   content: FieldDialog(
-                    Contents: "Camera3",
+                    Contents: "Camera3",name: 3,
                   ))
             ]),
       ]),
